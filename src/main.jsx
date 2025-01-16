@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Header from './components/header';
+import NewsList from './components/news_list';
 
 const App = () => {
-  return React.createElement(
-    'div',
-    { className: 'title' },
-    React.createElement('h1', { className: 'title' }, 'sss')
+  return (
+    <>
+      <Header />
+      <NewsList />
+    </>
   );
 };
 
