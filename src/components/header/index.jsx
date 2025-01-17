@@ -1,3 +1,5 @@
+import Nav from './nav';
+
 export default function Header() {
   const onChangeHandler = (event) => {
     console.log(event.target.value);
@@ -6,14 +8,9 @@ export default function Header() {
   return (
     <div>
       <header>
-        <div
-          className="logo"
-          onClick={() => console.log('clicked')}
-          onPointerLeave={(e) => console.log('exit')}
-        >
-          LOGO
-        </div>
+        <div className="logo">LOGO News</div>
         <input onChange={onChangeHandler} />
+        <Nav />
       </header>
     </div>
   );
