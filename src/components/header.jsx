@@ -1,3 +1,16 @@
 export default function Header() {
-  return <div>Date now {Date.now()}</div>;
+  const onChangeHandler = (event) => {
+    console.log(event.target.value);
+  };
+
+  return (
+    <div>
+      <header>
+        <div className="logo" onClick={() => console.log('clicked')}>
+          LOGO
+        </div>
+        <input onChange={onChangeHandler} />
+      </header>
+    </div>
+  );
 }
