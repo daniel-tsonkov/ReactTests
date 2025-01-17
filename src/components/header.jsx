@@ -6,7 +6,11 @@ export default function Header() {
   return (
     <div>
       <header>
-        <div className="logo" onClick={() => console.log('clicked')}>
+        <div
+          className="logo"
+          onClick={() => console.log('clicked')}
+          onPointerLeave={(e) => console.log('exit')}
+        >
           LOGO
         </div>
         <input onChange={onChangeHandler} />
