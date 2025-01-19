@@ -8,8 +8,13 @@ import { newsData } from './utils/data';
 const App = () => {
   let [news, setNews] = useState(newsData);
 
-  const getKeywords = () => {
-    console.log('hey');
+  const getKeywords = (event) => {
+    let keywords = event.target.value;
+    let filtered = newsData.filter((item) => {
+      return item.title.indexOf(keywords) > -1;
+    });
+
+    setNews(filtered);
   };
 
   return (
