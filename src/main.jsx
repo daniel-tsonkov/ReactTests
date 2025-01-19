@@ -7,13 +7,20 @@ import { newsData } from './utils/data';
 
 const App = () => {
   let [news, setNews] = useState(newsData);
-  console.log(news);
+
+  const getKeywords = () => {
+    console.log('hey');
+  };
 
   return (
     <>
-      <Header />
+      <Header getKeywords={getKeywords} />
       <div className="container">
-        {/* <StatePlayground /> */} <NewsList news={news} />
+        {/* <StatePlayground /> */}{' '}
+        <NewsList news={news}>
+          <br />
+          <h1>Crildreen</h1>
+        </NewsList>
       </div>
     </>
   );
