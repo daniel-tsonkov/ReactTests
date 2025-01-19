@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Nav from './nav';
 
 export default function Header() {
+  let [keywords, setKeywords] = useState('');
+
   const onChangeHandler = (event) => {
-    console.log(event.target.value);
+    setKeywords(event.target.value);
   };
 
   return (
@@ -10,6 +13,7 @@ export default function Header() {
       <header>
         <div className="logo">LOGO News</div>
         <input onChange={onChangeHandler} />
+        The keywords are: {keywords}
         <Nav />
       </header>
     </div>
