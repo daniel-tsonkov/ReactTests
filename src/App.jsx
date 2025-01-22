@@ -24,9 +24,15 @@ const App = () => {
       <button onClick={addOne}>+1</button>
       <button onClick={restOne}>-1</button>
       <button onClick={setZero}>Reset</button>
-      <hr/>
-      {block ? <BlockComponent/> : null}
-      <button onClick={{block ? setBlock(false) : setBlock(true)}}>Block</button>
+      <hr />
+      {block ? <BlockComponent /> : null}
+      <button
+        onClick={() => {
+          block ? setBlock(false) : setBlock(true);
+        }}
+      >
+        Block
+      </button>
     </>
   );
 };
