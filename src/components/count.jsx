@@ -1,4 +1,6 @@
 const Count = ({ count }) => {
+  console.log('2 - Count');
+
   return (
     <>
       <h3>My count: {count}</h3>
