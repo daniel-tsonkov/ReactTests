@@ -16,7 +16,13 @@ const App = () => {
   const restOne = () => setCount(count - 1);
   const setZero = () => setCount(0);
 
-  useEffect(() => {});
+  useEffect(() => {
+    console.log(count);
+
+    return () => {
+      console.log('Use effect count');
+    };
+  }, [count]);
 
   return (
     <>
