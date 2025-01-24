@@ -1,12 +1,16 @@
+import { useRef } from 'react';
+
 const App = () => {
+  const textInput = useRef();
   const triggerHandler = () => {
-    console.log('hello');
+    console.log(textInput.current.value);
   };
+
   return (
     <>
       <h1>Form:</h1>
-      <input type="text" />
-      <button ontClick={triggerHandler}>Trigger</button>
+      <input type="text" ref={textInput} />
+      <button onClick={triggerHandler}>Trigger</button>
     </>
   );
 };
