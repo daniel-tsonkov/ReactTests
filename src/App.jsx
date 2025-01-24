@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, forwardRef } from 'react';
 
 const App = () => {
   const textInput = useRef();
@@ -9,10 +9,14 @@ const App = () => {
   return (
     <>
       <h1>Form:</h1>
-      <input type="text" ref={textInput} />
+      <InputComponent ref={textInput} />
       <button onClick={triggerHandler}>Trigger</button>
     </>
   );
 };
+
+const InputComponent = forwardRef((props, ref) => {
+  return <input type="text" ref={ref} />;
+});
 
 export default App;
