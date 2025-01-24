@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const Title = () => {
   console.log('1 - Title');
 
@@ -9,5 +11,4 @@ const Title = () => {
   );
 };
 
-export default Title;
-//remove just upload
+export default memo(Title);
