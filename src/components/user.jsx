@@ -1,4 +1,4 @@
-import { UserItem } from './user_item';
+import UserItem from './user_item';
 
 const User = (props) => {
   return (
