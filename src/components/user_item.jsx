@@ -5,7 +5,18 @@ const UserItem = () => {
   const context = useContext(MyContext);
   console.log(context);
 
-  return <>User item</>;
+  return (
+    <>
+      {context.activeState
+        ? context.users.map((user) => (
+            <div key={user.id}>
+              <div>Name:{user.name}</div>
+            </div>
+          ))
+        : null}
+      <button onClick={context.setActive}>Toggle it</button>
+    </>
+  );
 };
 
 export default UserItem;
