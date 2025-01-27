@@ -1,15 +1,11 @@
 import User from './components/user';
+import { MyProvider } from './context';
 
 const App = () => {
-  const users = [
-    { id: 1, name: 'user1}' },
-    { id: 2, name: 'user2}' },
-    { id: 3, name: 'user3}' },
-  ];
   return (
-    <>
-      <User users={users} />
-    </>
+    <MyProvider>
+      <User />
+    </MyProvider>
   );
 };
 
