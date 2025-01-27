@@ -13,7 +13,7 @@ const MyProvider = (props) => {
       value={{
         users: users,
         activeState: active,
-        setActive: () => !active,
+        setActive: () => setActive(!active),
       }}
     >
       {props.children}
