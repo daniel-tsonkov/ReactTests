@@ -1,8 +1,11 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
+
+import { MyContext } from '../context';
 
 const Stage1 = () => {
   const textInput = useRef();
+  const context = useContext(MyContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,6 +14,8 @@ const Stage1 = () => {
     console.log(value);
     textInput.current.value = '';
   };
+
+  console.log(context);
 
   return (
     <>
