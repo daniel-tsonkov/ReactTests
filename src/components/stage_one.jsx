@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
 
 import { MyContext } from '../context';
@@ -6,13 +6,29 @@ import { MyContext } from '../context';
 const Stage1 = () => {
   const textInput = useRef();
   const context = useContext(MyContext);
+  const [error, setError] = useState([false, '']);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = textInput.current.value;
+    const validate = validateInput(value);
 
-    context.addPlayer(value);
-    textInput.current.value = '';
+    if (validate) {
+      context.addPlayer(value);
+      textInput.current.value = '';
+    }
+  };
+
+  const validateInput = (value) => {
+    if (value === '') {
+      setError([true, 'Add something']);
+      return false;
+    }
+    if (value.length <= 2) {
+      setError([true, 'Add more of 3 characters']);
+      return false;
+    }
+    return true;
   };
 
   console.log(context);
