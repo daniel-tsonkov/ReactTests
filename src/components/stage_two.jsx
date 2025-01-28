@@ -13,6 +13,18 @@ const Stage2 = () => {
       <div className="action_button" onClick={() => content.resetGame()}>
         RESET
       </div>
+      <div
+        className="action_button btn_2"
+        onClick={() => content.getNewLooser()}
+      >
+        GET NEW LOOSER
+      </div>
+      <div
+        className="action_button btn_3"
+        onClick={() => content.addNewLooser()}
+      >
+        ADD NEW LOOSER
+      </div>
     </>
   );
 };

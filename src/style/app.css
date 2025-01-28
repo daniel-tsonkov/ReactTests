@@ -55,7 +55,10 @@ h1 {
   .action_button.btn_2 {
     right: 200px;
   }
-  
+
+  .action_button.btn_3 {
+    right: 450px;
+  }
   
   .result_wrapper {
     text-align: center;
