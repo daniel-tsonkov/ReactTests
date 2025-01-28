@@ -10,6 +10,9 @@ const Stage2 = () => {
         <h3>The looser is:</h3>
         {content.result}
       </div>
+      <div className="action_button" onClick={() => content.resetGame()}>
+        RESET
+      </div>
     </>
   );
 };
