@@ -14,6 +14,7 @@ const Stage1 = () => {
     const validate = validateInput(value);
 
     if (validate) {
+      setError([false, '']);
       context.addPlayer(value);
       textInput.current.value = '';
     }
@@ -44,6 +45,9 @@ const Stage1 = () => {
             ref={textInput}
           />
         </Form.Group>
+
+        {error[0] ? <Alert>{error[1]}</Alert> : null}
+
         <Button className="miami" variant="primary" type="submit">
           Add player
         </Button>
