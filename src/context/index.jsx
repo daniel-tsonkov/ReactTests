@@ -1,4 +1,5 @@
 import { useState, createContext } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const MyContext = createContext();
 
@@ -20,6 +21,16 @@ const MyProvider = (props) => {
 
   const nextHandler = () => {
     if (players.length < 2) {
+      toast.error('More players', {
+        position: 'top-left',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
     } else {
       setStage(2);
       generateLooser();
@@ -45,6 +56,7 @@ const MyProvider = (props) => {
       >
         {props.children}
       </MyContext.Provider>
+      <ToastContainer />
     </>
   );
 };
