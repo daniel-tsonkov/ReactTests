@@ -11,7 +11,7 @@ const Stage1 = () => {
     e.preventDefault();
     const value = textInput.current.value;
 
-    console.log(value);
+    context.addPlayer(value);
     textInput.current.value = '';
   };
 
@@ -31,6 +31,18 @@ const Stage1 = () => {
         <Button className="miami" variant="primary" type="submit">
           Add player
         </Button>
+        {context.players && context.players.length > 0 ? (
+          <>
+            <hr />
+            <div>
+              <ul className="list-group">
+                {context.players.map((player, idx) => (
+                  <li key={idx}>{player}</li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
       </Form>
     </>
   );
