@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import Home from './components/home';
 import Post from './components/posts';
@@ -7,7 +7,11 @@ import Profile from './components/profile';
 const App = () => {
   return (
     <BrowserRouter>
-      <header>Header</header>
+      <header>
+        <Link to="/">HOME</Link>
+        <Link to="posts">POST</Link>
+        <Link to="profile">PROFILE</Link>
+      </header>
       <hr />
       <Routes>
         <Route path="/" element={<Home />} />
