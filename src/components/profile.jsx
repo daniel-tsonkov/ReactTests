@@ -1,7 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Profile = () => {
   let navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   return (
     <>
       <div>Profile</div>

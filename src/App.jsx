@@ -10,7 +10,15 @@ const App = () => {
       <header>
         <Link to="/">HOME</Link>
         <Link to="posts">POST</Link>
-        <Link to="profile">PROFILE</Link>
+        <Link
+          to={{
+            pathname: 'profile',
+            hash: '#dani',
+            rearch: '?profile=true',
+          }}
+        >
+          PROFILE
+        </Link>
       </header>
       <hr />
       <Routes>
