@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/home';
 import Post from './components/posts';
 import Profile from './components/profile';
+import PostItem from './components/postitem';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
         <hr />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="posts/:id" element={<PostItem />} />
           <Route path="posts" element={<Post />} />
           <Route path="profile" element={<Profile />} />
         </Routes>
