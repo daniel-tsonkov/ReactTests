@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { Transition } from 'react-transition-group';
 
 const TransitionComp = () => {
-  let [show, setShow] = useState(true);
+  let [show, setShow] = useState(false);
 
   const showDiv = () => {
     setShow(!show);
@@ -9,9 +10,9 @@ const TransitionComp = () => {
 
   return (
     <>
-      {show ? (
-        <div style={{ background: 'red', height: '100px' }}>Hello</div>
-      ) : null}
+      <Transition in={show} timeout={2000}>
+        {(state) => <p>{state}</p>}
+      </Transition>
       <hr />
       <button className="btn btn-primary" onClick={showDiv}>
         SHOW
