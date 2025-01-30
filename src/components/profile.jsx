@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 
 const Profile = () => {
   let navigate = useNavigate();
@@ -10,6 +10,7 @@ const Profile = () => {
     <>
       <div>Profile</div>
       <button onClick={() => navigate('/')}>HOME...</button>
+      {/* <Navigate replace to="/" /> */}
     </>
   );
 };

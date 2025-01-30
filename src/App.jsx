@@ -6,6 +6,7 @@ import {
   HashRouter,
   MemoryRouter,
   NavLink,
+  Navigate,
 } from 'react-router-dom';
 
 import Home from './components/home';
