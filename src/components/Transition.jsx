@@ -11,7 +11,18 @@ const TransitionComp = () => {
   return (
     <>
       <Transition in={show} timeout={2000}>
-        {(state) => <p>{state}</p>}
+        {(state) => (
+          <div
+            style={{
+              background: 'red',
+              height: '100px',
+              transition: 'all 1s ease',
+              opacity: state === 'exited' || state === 'exiting' ? 0 : 1,
+            }}
+          >
+            {state}
+          </div>
+        )}
       </Transition>
       <hr />
       <button className="btn btn-primary" onClick={showDiv}>
