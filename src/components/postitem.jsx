@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom'; //използва се за динамично подаване на параметри
+import { useParams, useLocation } from 'react-router-dom'; //използва се за динамично подаване на параметри
 
 const PostItem = () => {
   let params = useParams();
+  let location = useLocation();
 
   console.log(params);
 
