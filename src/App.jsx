@@ -53,6 +53,15 @@ const App = () => {
           <Route path="posts/:id" element={<PostItem />} />
           <Route path="posts" element={<Post />} />
           <Route path="profile" element={<Profile />} />
+          <Route
+            path="*"
+            element={
+              <>
+                <h1>Page not found</h1>
+              </>
+            }
+          />
+          {/*No matched route */}
         </Routes>
         <footer>
           <hr />
