@@ -10,7 +10,7 @@ const TransitionComp = () => {
 
   return (
     <>
-      <Transition in={show} timeout={2000}>
+      <Transition in={show} timeout={{ enter: 2000, exit: 500 }}>
         {(state) => (
           <div
             className={`square square-${state}`}
