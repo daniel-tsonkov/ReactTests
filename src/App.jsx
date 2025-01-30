@@ -14,6 +14,10 @@ import Post from './components/posts';
 import Profile from './components/profile';
 import PostItem from './components/postitem';
 
+import Users from './components/users';
+import Guests from './components/guests';
+import Admins from './components/admin';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -45,6 +49,11 @@ const App = () => {
                 PROFILE
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="users" className="nav-link">
+                USERS
+              </NavLink>
+            </li>
           </ul>
         </header>
         <hr />
@@ -53,6 +62,10 @@ const App = () => {
           <Route path="posts/:id" element={<PostItem />} />
           <Route path="posts" element={<Post />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="users" element={<Users />}>
+            <Route path="guests" element={<Guests />} />
+            <Route path="admins" element={<Admins />} />
+          </Route>
           <Route
             path="*"
             element={
