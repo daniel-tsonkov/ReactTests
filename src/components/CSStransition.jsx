@@ -11,7 +11,7 @@ const CssTr = () => {
   return (
     <>
       <CSSTransition in={show} timeout={5000} classNames="cssSq">
-        <div>HELLO!!!</div>
+        <div className="cssSq">HELLO!!!</div>
       </CSSTransition>
       <hr />
       <button className="btn btn-primary" onClick={showDiv}>
