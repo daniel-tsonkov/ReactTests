@@ -1,10 +1,18 @@
 import { useState } from 'react';
-import { Transition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 const CssTr = () => {
   let [show, setShow] = useState();
 
-  return <div>CSS TRANSITIONS</div>;
+  const showDiv = () => {
+    setShow(!show);
+  };
+
+  return (
+    <CSSTransition>
+      <div>HELLO!!!</div>
+    </CSSTransition>
+  );
 };
 
 export default CssTr;
