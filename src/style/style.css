@@ -51,4 +51,19 @@
   padding: 10px;
   color: white;
   margin-bottom: 5px;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 500ms ease-in;
+}
+
+.tgroup .item-enter.active,
+.tgroup .item-enter.done {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.tgroup .item-exit.active,
+.tgroup .item-exit.done {
+  opacity: 0.01;
+  transform: translateX(-100%);
 }

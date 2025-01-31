@@ -10,7 +10,7 @@ const CssTr = () => {
 
   return (
     <>
-      <CSSTransition in={show} timeout={5000} classNames="cssSq">
+      <CSSTransition in={show} timeout={500} classNames="cssSq">
         <div className="cssSq">HELLO!!!</div>
       </CSSTransition>
       <hr />
