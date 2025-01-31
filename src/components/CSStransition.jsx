@@ -9,9 +9,15 @@ const CssTr = () => {
   };
 
   return (
-    <CSSTransition>
-      <div>HELLO!!!</div>
-    </CSSTransition>
+    <>
+      <CSSTransition in={show} timeout={5000} classNames="cssSq">
+        <div>HELLO!!!</div>
+      </CSSTransition>
+      <hr />
+      <button className="btn btn-primary" onClick={showDiv}>
+        Show
+      </button>
+    </>
   );
 };
 
