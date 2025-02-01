@@ -1,5 +1,18 @@
+import { useSelector } from 'react-redux';
+
 const App = () => {
-  return <>HELLO</>;
+  const movies = useSelector((state) => state.movies.list);
+
+  return (
+    <>
+      <h2>Movie:</h2>
+      <ul>
+        {movies
+          ? movies.map((movie) => <li key={movie.id}>{movie.title}</li>)
+          : null}
+      </ul>
+    </>
+  );
 };
 
 export default App;
