@@ -7,8 +7,11 @@ export const usersSlice = createSlice({
         user: []
     },
     reducers: {
-
+        setType: (state, action) => {
+            state.type = action.payload || 'Guest'
+        }
     }
 })
 
+export const { setType } = usersSlice.actions;
 export default usersSlice.reducer;
