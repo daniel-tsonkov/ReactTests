@@ -10,12 +10,13 @@ export const moviesSlice = createSlice({
         ]
     },
     reducers: {
-        addMovie: (state) => {
-            const newMovie = {
-                id: 3,
-                title: "movie 3"
-            };
-            state.list = [...state.list, newMovie]
+        addMovie: (state, action) => {
+            // const newMovie = {
+            //     id: 3,
+            //     title: "movie 3"
+            // };
+
+            state.list = [...state.list, action.payload]
         }
     }
 });

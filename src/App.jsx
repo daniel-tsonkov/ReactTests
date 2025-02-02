@@ -14,7 +14,9 @@ const App = () => {
           : null}
       </ul>
       <hr />
-      <button onClick={() => dispatch(addMovie())}>ADD MOVIE</button>
+      <button onClick={() => dispatch(addMovie({ id: 3, title: 'movie31' }))}>
+        ADD MOVIE
+      </button>
     </>
   );
 };
