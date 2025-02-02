@@ -39,7 +39,8 @@ export const usersSlice = createSlice({
             })
             .addCase(fetchUsers.fulfilled, (state, action) => {
                 console.log('fulfilled');
-                console.log(action.payload);
+                //console.log(action.payload);
+                state.users = action.payload;
             })
             .addCase(fetchUsers.rejected, (state) => {
                 console.log('rejected');
