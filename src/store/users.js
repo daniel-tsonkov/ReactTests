@@ -5,7 +5,7 @@ export const usersSlice = createSlice({
     name: 'users',
     initialState: {
         type: 'Guest',
-        user: []
+        users: []
     },
     reducers: {
         setType: (state, action) => {
@@ -13,14 +13,17 @@ export const usersSlice = createSlice({
         },
         getUsers: (state) => {
             axios.get('https://jsonplaceholder.typicode.com/users')
-                .then((Response) => {
-                    console.log(Response.data);
-
+                .then((response) => {
+                    console.log(response.data);
+                    state.users = response.data;
                 })
                 .catch((err) => {
                     console.log(err);
                 })
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase()
     }
 })
 
