@@ -20,7 +20,8 @@ const App = () => {
         ADD MOVIE
       </button>
       <hr />
-      <h3>uUsers type: {users.type}</h3>
+      <h3>Users type: {users.type}</h3>
+      <button onClick={() => dispatch(setType('Admin'))}>SET TYEP</button>
     </>
   );
 };
