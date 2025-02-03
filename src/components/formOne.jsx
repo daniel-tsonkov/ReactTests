@@ -59,7 +59,9 @@ const FormOne = () => {
                     onChange={handleChange}
                     value={values.firstname}
                   />
-                  {errors.firstname ? <span>{errors.firstname}</span> : null}
+                  {errors.firstname && touched.firstname ? (
+                    <span>{errors.firstname}</span>
+                  ) : null}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="lastname">Last name</label>
@@ -70,7 +72,9 @@ const FormOne = () => {
                     onChange={handleChange}
                     value={values.lastname}
                   />
-                  {errors.lastname ? <span>{errors.lastname}</span> : null}
+                  {errors.lastname && touched.lastname ? (
+                    <span>{errors.lastname}</span>
+                  ) : null}
                 </div>
               </div>
 
@@ -84,7 +88,9 @@ const FormOne = () => {
                   value={values.email}
                   placeholder="you@example.com"
                 />
-                {errors.email ? <span>{errors.email}</span> : null}
+                {errors.email && touched.email ? (
+                  <span>{errors.email}</span>
+                ) : null}
               </div>
 
               <div className="row">
