@@ -16,6 +16,12 @@ const FormOne = () => {
         firstname: Yup.string()
           .required('This is required')
           .max(5, 'Name is too long'),
+        lastname: Yup.string()
+          .required('This is required')
+          .max(5, 'Name is too long'),
+        email: Yup.string()
+          .required('This is required')
+          .email('Enter valid email'),
       })}
       onSubmit={(values) => {
         console.log(values.firstname);
