@@ -11,6 +11,25 @@ const FormOne = () => {
         state: '',
         zip: '',
       }}
+      validate={(values) => {
+        const errors = {};
+        if (!values.firstname) {
+          errors.firstname = 'Enter first name';
+        }
+        if (!values.lastname) {
+          errors.lastname = 'Enter last name';
+        }
+        if (!values.email) {
+          errors.email = 'Enter email';
+        } else if (
+          !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            values.email
+          )
+        ) {
+          errors.email = 'Enter valid email';
+        }
+        return errors;
+      }}
       onSubmit={(values) => {
         console.log(values.firstname);
       }}
@@ -40,6 +59,7 @@ const FormOne = () => {
                     onChange={handleChange}
                     value={values.firstname}
                   />
+                  {errors.firstname ? <span>{errors.firstname}</span> : null}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="lastname">Last name</label>
@@ -47,8 +67,10 @@ const FormOne = () => {
                     type="text"
                     className="form-control"
                     id="lastname"
-                    name="lastname"
+                    onChange={handleChange}
+                    value={values.lastname}
                   />
+                  {errors.lastname ? <span>{errors.lastname}</span> : null}
                 </div>
               </div>
 
@@ -58,9 +80,11 @@ const FormOne = () => {
                   type="email"
                   className="form-control"
                   id="email"
-                  name="email"
+                  onChange={handleChange}
+                  value={values.email}
                   placeholder="you@example.com"
                 />
+                {errors.email ? <span>{errors.email}</span> : null}
               </div>
 
               <div className="row">
