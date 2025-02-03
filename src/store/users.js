@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchUsers = createAsyncThunk(
+export const fetchUser = createAsyncThunk(
     'users/fetchUser',
     async (obj, thunkAPI) => {
         try {
@@ -30,16 +30,16 @@ export const usersSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchUsers.pending, (state) => {
-                console.log('pending');
+            .addCase(fetchUser.pending, (state) => {
+                pending.state = true;
 
             })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                console.log('fulfilled');
+            .addCase(fetchUser.fulfilled, (state, action) => {
+                state.loading = false
                 state.users = action.payload;
             })
-            .addCase(fetchUsers.rejected, (state) => {
-                console.log('rejected');
+            .addCase(fetchUser.rejected, (state, action) => {
+                console.log(action.payload);
 
             })
     }
