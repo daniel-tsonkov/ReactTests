@@ -2,7 +2,19 @@ import { Formik } from 'formik';
 
 const FormOne = () => {
   return (
-    <Formik>
+    <Formik
+      initialValues={{
+        firstname: '',
+        lastname: '',
+        email: '',
+        country: '',
+        state: '',
+        zip: '',
+      }}
+      onSubmit={(values) => {
+        console.log(values.firstname);
+      }}
+    >
       {({
         values,
         errors,
@@ -14,7 +26,7 @@ const FormOne = () => {
       }) => (
         <div className="container">
           <div className="col-md-12 mt-5">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h4 className="mb-3">Personal information</h4>
 
               <div className="row">
@@ -25,6 +37,8 @@ const FormOne = () => {
                     className="form-control"
                     id="firstname"
                     name="firstname"
+                    onChange={handleChange}
+                    value={values.firstname}
                   />
                 </div>
                 <div className="col-md-6 mb-3">
