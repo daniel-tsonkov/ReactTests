@@ -4,9 +4,12 @@ import axios from "axios";
 export const fetchUsers = createAsyncThunk(
     'users/fetchUsers',
     async (thunkAPI) => {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-            .then((response) => response.data);
-        return res;
+        try {
+            const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+            return res.data;
+        } catch (err) {
+            return err;
+        }
     }
 );
 
