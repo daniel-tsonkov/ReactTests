@@ -3,12 +3,9 @@ import axios from "axios";
 
 export const fetchUsers = createAsyncThunk(
     'users/fetchUser',
-    async (thunkAPI) => {
-        console.log(thunkAPI);
-        thunkAPI.dispatch(testAsyncDispatch());
-
+    async (obj, thunkAPI) => {
         try {
-            const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+            const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
             return res.data;
         } catch (err) {
             return err;
@@ -21,6 +18,7 @@ export const usersSlice = createSlice({
     initialState: {
         type: 'Guest',
         users: [],
+        loading: false,
     },
     reducers: {
         setType: (state, action) => {

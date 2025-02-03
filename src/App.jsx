@@ -22,7 +22,17 @@ const App = () => {
       <hr />
       {/* <h3>Users type: {users.type}</h3>
       <button onClick={() => dispatch(setType('Admin'))}>SET TYEP</button> */}
-      <button onClick={() => dispatch(fetchUsers(id: '1'))}>GET USERS</button>
+      <div>{users.loading ? 'loading' : null}</div>
+      <ul>
+        {users
+          ? users.users.map((user) => {
+              <li key={user.id}>{user.name}</li>;
+            })
+          : null}
+      </ul>
+      <button onClick={() => dispatch(fetchUsers({ id: '1' }))}>
+        GET USERS
+      </button>
     </>
   );
 };
