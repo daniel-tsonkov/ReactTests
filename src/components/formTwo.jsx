@@ -4,6 +4,9 @@ import * as Yup from 'yup';
 const FormTwo = () => {
   const formik = useFormik({
     initialValues: { firstname: '' },
+    validationSchema: Yup.object({
+      firstname: Yup.string().required('This is required'),
+    }),
     onSubmit: (values) => {
       console.log(values);
     },
@@ -18,8 +21,12 @@ const FormTwo = () => {
             type="text"
             name="firstname"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} //pri zaguba na fokus
             value={formik.values.firstname}
           />
+          {formik.errors.firstname && formik.touched.firstname ? (
+            <span>{formik.errors.firstname}</span>
+          ) : null}
           <hr className="mb-4" />
           <button className="btn btn-primary btn-lg btn-block" type="submit">
             Submit
