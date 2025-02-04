@@ -20,7 +20,7 @@ const FormTwo = () => {
             className="form-control"
             type="text"
             name="firstname"
-            {...formik.getFieldProps('firstname')}
+            {...formik.getFieldProps('firstname')} //validations
           />
           {formik.errors.firstname && formik.touched.firstname ? (
             <span>{formik.errors.firstname}</span>
