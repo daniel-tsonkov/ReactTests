@@ -20,9 +20,7 @@ const FormTwo = () => {
             className="form-control"
             type="text"
             name="firstname"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur} //pri zaguba na fokus
-            value={formik.values.firstname}
+            {...formik.getFieldProps('firstname')}
           />
           {formik.errors.firstname && formik.touched.firstname ? (
             <span>{formik.errors.firstname}</span>
