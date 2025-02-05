@@ -3,9 +3,10 @@ import * as Yup from 'yup';
 
 const FormThree = () => {
   const formikProps = {
-    initialValues: { firstname: '', color: '' },
+    initialValues: { firstname: '', lastname: '', color: '' },
     validationSchema: Yup.object({
-      firstname: Yup.string().required('This is required'),
+      firstname: Yup.string().required('Enter first name'),
+      lastname: Yup.string().required('Enter last name'),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -20,6 +21,9 @@ const FormThree = () => {
     <>
       <label htmlFor={field.name}>Last name</label>
       <input type="text" className="form-control" {...field} />
+      {errors[field.name] && touched[field.name] ? (
+        <span>{errors[field.name]}</span>
+      ) : null}
     </>
   );
 
