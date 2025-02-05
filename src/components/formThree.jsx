@@ -12,6 +12,17 @@ const FormThree = () => {
     },
   };
 
+  const lastnameComponent = ({
+    field,
+    form: { touched, errors },
+    ...props
+  }) => (
+    <>
+      <label htmlFor={field.name}>Last name</label>
+      <input type="text" className="form-control" {...field} />
+    </>
+  );
+
   return (
     <div className="container">
       <div className="col-md-12 mt-5">
@@ -25,7 +36,13 @@ const FormThree = () => {
                 <span>{formik.errors.firstname}</span>
               ) : null}
               <hr className="mb-4" />
+              <Field
+                name="lastname"
+                placeholder="last name"
+                component={lastnameComponent}
+              />
 
+              <hr className="mb-4" />
               <Field as="select" name="color" className="custom-select">
                 <option value="red">RED</option>
                 <option value="green">GREEN</option>
