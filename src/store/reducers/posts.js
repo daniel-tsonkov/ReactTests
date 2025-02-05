@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+//import {} from "../utils/thunks"
 
 export const postsSlice = createSlice({
     name: 'posts',
@@ -9,7 +10,6 @@ export const postsSlice = createSlice({
         }
     },
     reducers: {},
-    extraReducers: {}
 });
 
 export default postsSlice.reducer;
