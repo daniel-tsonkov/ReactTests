@@ -3,23 +3,24 @@ import * as Yup from 'yup';
 
 const FormThree = () => {
   const formikProps = {
-    initialValues: { firstname: '', lastname: '', color: '' },
+    initialValues: { firstname: '', lastname: '', color: '', age: '' },
     validationSchema: Yup.object({
       firstname: Yup.string().required('Enter first name'),
       lastname: Yup.string().required('Enter last name'),
+      age: Yup.string().required('Enter age'),
     }),
     onSubmit: (values) => {
       console.log(values);
     },
   };
 
-  const lastnameComponent = ({
+  const myCustomComponent = ({
     field,
     form: { touched, errors },
     ...props
   }) => (
     <>
-      <label htmlFor={field.name}>Last name</label>
+      <label htmlFor={field.name}>{props.labelname}</label>
       <input type="text" className="form-control" {...field} />
       {errors[field.name] && touched[field.name] ? (
         <span>{errors[field.name]}</span>
@@ -43,7 +44,16 @@ const FormThree = () => {
               <Field
                 name="lastname"
                 placeholder="last name"
-                component={lastnameComponent}
+                component={myCustomComponent}
+                labelname="Enter your last name"
+              />
+
+              <hr className="mb-4" />
+              <Field
+                name="age"
+                placeholder="Age"
+                component={myCustomComponent}
+                labelname="Enter your age"
               />
 
               <hr className="mb-4" />
