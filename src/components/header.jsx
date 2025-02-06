@@ -1,8 +1,15 @@
+import { Nav, Navbar } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 const Header = () => {
   return (
-    <>
-      <div>HEADER</div>
-    </>
+    <div className="container">
+      <Navbar className="yellotail">
+        <Nav.Link to="/">
+          <Navbar.Brand>The daily news</Navbar.Brand>
+        </Nav.Link>
+      </Navbar>
+    </div>
   );
 };
 
