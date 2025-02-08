@@ -12,11 +12,16 @@ export const postsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchPosts.pending, (state) => { })
-            .addCase(fetchPosts.fulfilled, (state, action) => {
-
+            .addCase(fetchPosts.pending, (state) => {
+                state.loading = true;
             })
-            .addCase(fetchPosts.rejected, (state) => { })
+            .addCase(fetchPosts.fulfilled, (state, action) => {
+                state.loading = false;
+                state.articles = action.payload
+            })
+            .addCase(fetchPosts.rejected, (state) => {
+                state.loading = false;
+            })
     }
 });
 
