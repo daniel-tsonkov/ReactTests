@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../store/utils/thunks';
-import { Button, Spinner } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'; //tova e za butona na statiqta
+import { Button, Spinner, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 
 import Masonry from 'react-masonry-css';
 
@@ -32,19 +33,24 @@ const HomePosts = () => {
           ? homePosts.articles.items.map((item) => (
               <div key={item.id}>
                 <img
-                  style={{ width: '100%', height: '250px' }}
+                  style={{ width: '100%', height: '200px' }}
                   src={`${item.image}?${item.id}`}
                   alt="some pic"
                 />
                 <div className="author">
-                  <span>{item.author}</span> -{item.createdAt}
+                  <span>{item.author} - </span>
+                  {item.createdAt}
                 </div>
                 <div className="content">
                   <div className="title">{item.title}</div>
                   <div className="excerpt">{item.excerpt}</div>
-                  {/* <LinkContainer to={`/article/${item.id}`} className="mt-3">
+                  <Nav.Link
+                    as={Link}
+                    to={`/article/${item.id}`}
+                    className="mt-3"
+                  >
                     <Button variant="light">Read more</Button>
-                  </LinkContainer> */}
+                  </Nav.Link>
                 </div>
               </div>
             ))
@@ -53,13 +59,13 @@ const HomePosts = () => {
       {homePosts.loading ? (
         <div style={{ textAlign: 'center' }}>
           <Spinner animation="border" role="status">
-            <span className="visually-hidden">Load...</span>
+            <span className="visually-hidden">Loading...</span>
           </Spinner>
         </div>
       ) : null}
       {!homePosts.articles.end && !homePosts.loading ? (
         <Button variant="outline-dark" onClick={() => loadMorePosts()}>
-          Load More Posts
+          Load More Post
         </Button>
       ) : null}
     </>

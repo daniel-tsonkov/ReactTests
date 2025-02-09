@@ -1,20 +1,25 @@
 import { Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <div className="container">
-      <Navbar className="yellotail">
-        <Nav.Link to="/">
+      <Navbar className="yellotail" expand="lg">
+        <Nav.Link as={Link} to="/">
           <Navbar.Brand>The daily news</Navbar.Brand>
         </Nav.Link>
       </Navbar>
       <Nav>
         <Nav.Item>
-          <Nav.Link to="/">HOME</Nav.Link>
+          <Nav.Link as={Link} to="/">
+            Home
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link to="/contact">CONTACT</Nav.Link>
+          <Nav.Link as={Link} to="/contact">
+            Contact
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     </div>

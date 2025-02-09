@@ -1,6 +1,5 @@
 const Contact = () => {
-  return <>CONTACT</>;
+  return <>Contact</>;
 };
 
 export default Contact;
-//Configure redux
