@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../store/utils/thunks';
 import { Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'; //tova e za butona na statiqta
 
 import Masonry from 'react-masonry-css';
 
@@ -10,7 +11,9 @@ const HomePosts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts({ page: 1, order: 'desc', limit: 6 }));
+    if (homePosts.articles.items.length <= 0) {
+      dispatch(fetchPosts({ page: 1, order: 'desc', limit: 6 }));
+    }
   }, []);
 
   const loadMorePosts = () => {
@@ -35,6 +38,13 @@ const HomePosts = () => {
                 />
                 <div className="author">
                   <span>{item.author}</span> -{item.createdAt}
+                </div>
+                <div className="content">
+                  <div className="title">{item.title}</div>
+                  <div className="excerpt">{item.excerpt}</div>
+                  {/* <LinkContainer to={`/article/${item.id}`} className="mt-3">
+                    <Button variant="light">Read more</Button>
+                  </LinkContainer> */}
                 </div>
               </div>
             ))
