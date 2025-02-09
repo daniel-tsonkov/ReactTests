@@ -5,7 +5,9 @@ import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'//sa formata na 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  optimizeDeps: {
-
+  optimizeDeps: { //tuk
+    esbuildOptions: { //tuk
+      plugins: [esbuildCommonjs(['react-moment'])] //i tuk neobhodimo za formata na vremeto
+    }
   }
 })
