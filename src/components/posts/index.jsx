@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPostById } from '../../store/utils/thunks';
 import Moment from 'react-moment';
+import { clearPostById } from '../../store/reducers/posts';
 
 const PostComponent = () => {
   const posts = useSelector((state) => state.posts);
@@ -11,6 +12,12 @@ const PostComponent = () => {
 
   useEffect(() => {
     dispatch(fetchPostById(params.id));
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearPostById());
+    };
   }, []);
 
   return (
