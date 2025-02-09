@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../store/utils/thunks';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'; //tova e za butona na statiqta
 
 import Masonry from 'react-masonry-css';
@@ -50,6 +50,13 @@ const HomePosts = () => {
             ))
           : null}
       </Masonry>
+      {homePosts.loading ? (
+        <div style={{ textAlign: 'center' }}>
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Load...</span>
+          </Spinner>
+        </div>
+      ) : null}
       {!homePosts.articles.end && !homePosts.loading ? (
         <Button variant="outline-dark" onClick={() => loadMorePosts()}>
           Load More Posts
