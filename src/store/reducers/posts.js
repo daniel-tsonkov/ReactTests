@@ -7,7 +7,7 @@ export const postsSlice = createSlice({
         loading: true,
         articles: {
             items: []
-        }
+        },
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -27,7 +27,7 @@ export const postsSlice = createSlice({
             })
             .addCase(fetchPostById.fulfilled, (state, action) => {
                 state.loading = false;
-                state.articles = action.payload
+                state.postById = action.payload;
             })
             .addCase(fetchPostById.rejected, (state) => {
                 state.loading = false;
