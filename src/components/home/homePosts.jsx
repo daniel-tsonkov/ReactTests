@@ -5,6 +5,7 @@ import { Button, Spinner, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
+import Moment from 'react-moment';
 import Masonry from 'react-masonry-css';
 
 const HomePosts = () => {
