@@ -21,10 +21,25 @@ const HomePosts = () => {
   return (
     <>
       <Masonry
-        breakpointCols={{ default: 3 }}
+        breakpointCols={{ default: 3, 800: 2, 400: 1 }}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
-      ></Masonry>
+      >
+        {homePosts.articles
+          ? homePosts.articles.items.map((item) => (
+              <div key={item.id}>
+                <img
+                  style={{ width: '100%', height: '250px' }}
+                  src={`${item.image}?${item.id}`}
+                  alt="some pic"
+                />
+                <div className="author">
+                  <span>{item.author}</span> -{item.createdAt}
+                </div>
+              </div>
+            ))
+          : null}
+      </Masonry>
       {!homePosts.articles.end && !homePosts.loading ? (
         <Button variant="outline-dark" onClick={() => loadMorePosts()}>
           Load More Posts
