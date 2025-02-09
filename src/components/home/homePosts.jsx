@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../store/utils/thunks';
 import { Button } from 'react-bootstrap';
 
+import Masonry from 'react-masonry-css';
+
 const HomePosts = () => {
   const homePosts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
@@ -18,6 +20,11 @@ const HomePosts = () => {
 
   return (
     <>
+      <Masonry
+        breakpointCols={{ default: 3 }}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      ></Masonry>
       {!homePosts.articles.end && !homePosts.loading ? (
         <Button variant="outline-dark" onClick={() => loadMorePosts()}>
           Load More Posts
