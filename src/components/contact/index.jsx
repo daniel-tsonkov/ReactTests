@@ -30,6 +30,13 @@ const Contact = () => {
             placeholder="Enter your last name"
           />
         </div>
+        <div className="form-group mt-2">
+          <label htmlFor="message">Message</label>
+          <textarea className="form-control" name="message" rows={3} />
+        </div>
+        <button type="submit" className="btn btn-primary mt-2">
+          Send message
+        </button>
       </form>
     </>
   );
