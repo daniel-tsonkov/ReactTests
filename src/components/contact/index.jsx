@@ -1,17 +1,18 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { Alert } from 'react-bootstrap';
 
 const Contact = () => {
   const formik = useFormik({
-    initialValue: { email: '', firstname: '', lastname: '', message: '' },
+    initialValues: { email: '', firstname: '', lastname: '', message: '' },
     validationSchema: Yup.object({
       email: Yup.string().required('Enter email').email('invalid email'),
       firstname: Yup.string().required('Enter text'),
       lastname: Yup.string().required('Enter text'),
       message: Yup.string().required('Enter text').max(500, 'Too long'),
     }),
-    onSubmit: (valuse, { resetForm }) => {
-      console.log(valuse);
+    onSubmit: (valuses, { resetForm }) => {
+      console.log(valuses);
     },
   });
 
@@ -28,9 +29,9 @@ const Contact = () => {
             placeholder="email@example.com"
             {...formik.getFieldProps('email')}
           />
-          {formik.errors.email && formik.touched.email ?
-          
-        :null}
+          {formik.errors.email && formik.touched.email ? (
+            <Alert variant="danger">{formik.errors.email}</Alert>
+          ) : null}
         </div>
         <div className="form-group mt-2">
           <label htmlFor="firstname">First name</label>
@@ -39,7 +40,11 @@ const Contact = () => {
             className="form-control"
             name="firstname"
             placeholder="Enter your name"
+            {...formik.getFieldProps('firstname')}
           />
+          {formik.errors.firstname && formik.touched.firstname ? (
+            <Alert variant="danger">{formik.errors.firstname}</Alert>
+          ) : null}
         </div>
         <div className="form-group mt-2">
           <label htmlFor="lastname">Last name</label>
@@ -48,11 +53,23 @@ const Contact = () => {
             className="form-control"
             name="lastname"
             placeholder="Enter your last name"
+            {...formik.getFieldProps('lastname')}
           />
+          {formik.errors.lastname && formik.touched.lastname ? (
+            <Alert variant="danger">{formik.errors.lastname}</Alert>
+          ) : null}
         </div>
         <div className="form-group mt-2">
           <label htmlFor="message">Message</label>
-          <textarea className="form-control" name="message" rows={3} />
+          <textarea
+            className="form-control"
+            name="message"
+            rows={3}
+            {...formik.getFieldProps('message')}
+          />
+          {formik.errors.message && formik.touched.message ? (
+            <Alert variant="danger">{formik.errors.message}</Alert>
+          ) : null}
         </div>
         <button type="submit" className="btn btn-primary mt-2">
           Send message
