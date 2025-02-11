@@ -44,7 +44,7 @@ export const sendMessage = createAsyncThunk(
                 method: 'POST',
                 url: `${URL_SERV}/contact`,
                 data: data
-            })
+            });
             return true;
         } catch (err) {
             throw err

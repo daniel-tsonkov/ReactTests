@@ -15,7 +15,15 @@ const Contact = () => {
       message: Yup.string().required('Enter text').max(500, 'Too long'),
     }),
     onSubmit: (valuses, { resetForm }) => {
-      dispatch(sendMessage(valuses));
+      dispatch(sendMessage(valuses))
+        .unwrap()
+        .then((response) => {
+          resetForm();
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
 
