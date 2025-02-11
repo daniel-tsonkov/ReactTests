@@ -4,6 +4,8 @@ import { Alert } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { sendMessage } from '../../store/utils/thunks';
 
+import { showToast } from '../utils/tools';
+
 const Contact = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -19,10 +21,10 @@ const Contact = () => {
         .unwrap()
         .then((response) => {
           resetForm();
-          console.log(response);
+          showToast('SUCCESS', 'Message send');
         })
         .catch((err) => {
-          console.log(err);
+          showToast('ERROR', 'Message not send');
         });
     },
   });
