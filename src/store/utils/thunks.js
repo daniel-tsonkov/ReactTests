@@ -40,9 +40,9 @@ export const addToNewsletter = createAsyncThunk(
     'users/addToNewsletter',
     async (data) => {
         try {
-            const finUser = await axios.get(`${URL_SERV}/newsletter?email=${data.email}`)
+            const findUser = await axios.get(`${URL_SERV}/newsletter?email=${data.email}`)
 
-            if (!Array.isArray(finUser.data) || !finUser.data.length) {
+            if (!Array.isArray(findUser.data) || !findUser.data.length) {
                 const response = await axios({
                     method: 'POST',
                     url: `${URL_SERV}/newsletter`,

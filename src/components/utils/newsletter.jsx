@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { addToNewsletter } from '../../store/utils/thunks';
 
 const Newsletter = () => {
   const textInput = useRef();
@@ -9,6 +10,12 @@ const Newsletter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = textInput.current.value;
+
+    dispatch(addToNewsletter({ email: value }))
+      .unwrap()
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
