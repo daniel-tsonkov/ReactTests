@@ -1,17 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const postsSlice = createSlice({
-    name: 'posts',
+export const usersSlice = createSlice({
+    name: 'users',
     initialState: {
-        loading: true,
-        articles: {
-            items: []
-        },
+        action: {
+
+        }
     },
     reducers: {
 
     },
-
 });
 
-export default postsSlice.reducer;
+export default usersSlice.reducer;
