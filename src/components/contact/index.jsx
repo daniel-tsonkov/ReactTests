@@ -1,8 +1,11 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Alert } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { sendMessage } from '../../store/utils/thunks';
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: { email: '', firstname: '', lastname: '', message: '' },
     validationSchema: Yup.object({
@@ -12,7 +15,7 @@ const Contact = () => {
       message: Yup.string().required('Enter text').max(500, 'Too long'),
     }),
     onSubmit: (valuses, { resetForm }) => {
-      console.log(valuses);
+      dispatch(sendMessage(valuses));
     },
   });
 
