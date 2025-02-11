@@ -20,8 +20,10 @@ const Contact = () => {
       dispatch(sendMessage(valuses))
         .unwrap()
         .then((response) => {
-          resetForm();
-          showToast('SUCCESS', 'Message send');
+          if (response) {
+            resetForm();
+            showToast('SUCCESS', 'Message send');
+          }
         })
         .catch((err) => {
           showToast('ERROR', 'Message not send');

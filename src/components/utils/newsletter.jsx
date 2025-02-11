@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addToNewsletter } from '../../store/utils/thunks';
+import { showToast } from './tools';
+import { clearNewsletter } from '../../store/reducers/users';
 
 const Newsletter = () => {
   const textInput = useRef();
@@ -14,7 +16,14 @@ const Newsletter = () => {
     dispatch(addToNewsletter({ email: value }))
       .unwrap()
       .then((response) => {
-        console.log(response);
+        if (response.newsletter === 'added') {
+          showToast('SUCCESS', 'Thank you !!!');
+        }
+        if (response.newsletter === 'failed') {
+          showToast('ERROR', 'Sorry, already on the DB');
+        }
+        textInput.current.value = '';
+        dispatch(clearNewsletter());
       });
   };
 

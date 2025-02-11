@@ -48,12 +48,13 @@ export const addToNewsletter = createAsyncThunk(
                     url: `${URL_SERV}/newsletter`,
                     data: {
                         email: data.email,
-                        email: response.data,
+
                     }
                 });
 
                 return {
-                    newsletter: 'added'
+                    newsletter: 'added',
+                    email: response.data,
                 }
             } else {
                 return {

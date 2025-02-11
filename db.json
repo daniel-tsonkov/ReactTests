@@ -201,7 +201,48 @@
       "createdAt": "2020-07-22T12:59-0500"
     }
   ],
-  "newsletter": [],
+  "newsletter": [
+    {
+      "id": "cd48",
+      "email": "asd@asd.asd"
+    },
+    {
+      "id": "c3a7",
+      "email": "asd1@asd.asd"
+    },
+    {
+      "id": "b56b",
+      "email": "asd2@asd.asd"
+    },
+    {
+      "id": "1d1e",
+      "email": "asd3@asd.asd"
+    },
+    {
+      "id": "e6f2",
+      "email": "asd4@asd.asd"
+    },
+    {
+      "id": "7388",
+      "email": "asd5@asd.asd"
+    },
+    {
+      "id": "7648",
+      "email": "asd6@asd.asd"
+    },
+    {
+      "id": "461e",
+      "email": "asd7@asd.asd"
+    },
+    {
+      "id": "ae8f",
+      "email": "asd8@asd.asd"
+    },
+    {
+      "id": "95b2",
+      "email": "as@as.as"
+    }
+  ],
   "contact": [
     {
       "id": "0790",
