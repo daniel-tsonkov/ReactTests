@@ -36,6 +36,37 @@ export const fetchPostById = createAsyncThunk(
     }
 );
 
+export const addToNewsletter = createAsyncThunk(
+    'users/addToNewsletter',
+    async (data) => {
+        try {
+            const finUser = await axios.get(`${URL_SERV}/newsletter?email=${data.email}`)
+
+            if (!Array.isArray(finUser.data) || !finUser.data.length) {
+                const response = await axios({
+                    method: 'POST',
+                    url: `${URL_SERV}/newsletter`,
+                    data: {
+                        email: data.email,
+                        email: response.data,
+                    }
+                });
+
+                return {
+                    newsletter: 'added'
+                }
+            } else {
+                return {
+                    newsletter: 'failed'
+                }
+            }
+            return true;
+        } catch (err) {
+            throw err
+        }
+    }
+);
+
 export const sendMessage = createAsyncThunk(
     'users/sendMessage',
     async (data) => {
