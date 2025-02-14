@@ -17,26 +17,39 @@ const client = new MongoClient(mongoURI, {
     }
 });
 
-async function run() {
+// async function run() {
+//     try {
+//         // Стартиране на връзката
+//         await client.connect();
+//         console.log('Свързан успешно с базата данни');
+
+//         // Използване на базата данни
+//         //const db = client.db(dbName);
+
+//         // Тук можеш да правиш заявки или други операции с базата данни
+
+//     } finally {
+//         await client.close();
+//     }
+// }
+
+//run().catch(console.dir); //Ако има грешки ще я отпечата
+
+app.get('/api/users', async (req, res, next) => {
     try {
-        // Стартиране на връзката
         await client.connect();
-        console.log('Свързан успешно с базата данни');
+        const database = client.db('myApp');
+        const collection = database.collection('users');
+        const query = await collection.insertOne({
+            name: 'name1',
+            lastname: 'Lastname1'
+        })
+    } catch (err) {
 
-        // Използване на базата данни
-        //const db = client.db(dbName);
-
-        // Тук можеш да правиш заявки или други операции с базата данни
-
-    } finally {
+    }
+    finally {
         await client.close();
     }
-}
-
-run().catch(console.dir); //Ако има грешки ще я отпечата
-
-app.get('/api/users', async () => {
-
 })
 
 const port = process.env.PORT || 3001
