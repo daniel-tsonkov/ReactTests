@@ -33,7 +33,11 @@ async function run() {
     }
 }
 
-run().catch(console.dir);
+run().catch(console.dir); //Ако има грешки ще я отпечата
+
+app.get('/api/users', async () => {
+
+})
 
 const port = process.env.PORT || 3001
 app.listen(port);

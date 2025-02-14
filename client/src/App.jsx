@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
 import axios from 'axios';
+import { response } from 'express';
 
 const App = () => {
-  useEffect(() => {
-    axios.get('/api/users').then((response) => {
-      console.log(response.data);
-    });
-  }, []);
+  const addUser = () => {
+    axios
+      .get('/api/users')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.log('err');
+      });
+  };
+
   return (
     <>
-      <h1>App</h1>
+      <div className="App">
+        <button onClick={() => addUser()}>Add user</button>
+      </div>
     </>
   );
 };
