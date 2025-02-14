@@ -8,11 +8,13 @@ const dbName = 'user-list';
 
 // Създаване на клиент за MongoDB
 const client = new MongoClient(mongoURI, {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
 });
 
 async function run() {
@@ -22,14 +24,16 @@ async function run() {
         console.log('Свързан успешно с базата данни');
 
         // Използване на базата данни
-        const db = client.db(dbName);
+        //const db = client.db(dbName);
 
         // Тук можеш да правиш заявки или други операции с базата данни
 
-    } catch (error) {
-        console.error('Грешка при свързване с базата данни:', error);
+    } finally {
+        await client.close();
     }
 }
+
+run().catch(console.dir);
 
 const port = process.env.PORT || 3001
 app.listen(port);
