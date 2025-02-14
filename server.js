@@ -1,13 +1,35 @@
 const express = require('express');
 const app = express();
-const { MongoClient } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // Адресът към MongoDB и името на базата данни
 const mongoURI = 'mongodb://localhost:27017';
-const dbName = 'име_на_твоята_база_данни';
+const dbName = 'user-list';
 
 // Създаване на клиент за MongoDB
-const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(mongoURI, {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true
+});
+
+async function run() {
+    try {
+        // Стартиране на връзката
+        await client.connect();
+        console.log('Свързан успешно с базата данни');
+
+        // Използване на базата данни
+        const db = client.db(dbName);
+
+        // Тук можеш да правиш заявки или други операции с базата данни
+
+    } catch (error) {
+        console.error('Грешка при свързване с базата данни:', error);
+    }
+}
 
 const port = process.env.PORT || 3001
 app.listen(port);
