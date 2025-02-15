@@ -1,11 +1,26 @@
 const express = require('express');
 const app = express();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose');
 
 // Адресът към MongoDB и името на базата данни
 const mongoURI = 'mongodb://localhost:27017';
 const dbName = 'uDemy';
 const dbCollection = 'test';
+
+mongoose.connect(mongoURI);
+
+////////SCHEMA/////////////
+const carSchema = mongoose.Schema({
+    brand: String,
+    model: String,
+    year: Number,
+    avail: Boolean
+})
+
+
+
+///////////////////////////
 
 // Създаване на клиент за MongoDB
 // const client = new MongoClient(mongoURI, {
