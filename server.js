@@ -33,7 +33,18 @@ app.post('/api/addcar', async (req, res, next) => {
         });
 
         const newCar = await addCar.save()
-        console.log(newCar);
+        //console.log(newCar);
+        res.send(200);
+
+    } catch (err) {
+        console.log(err);
+
+    }
+})
+
+app.get('/api/getcars', async (req, res, next) => {
+    try {
+        let doc = await Car.find()
 
     } catch (err) {
         console.log(err);
