@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
+const bodyParcer = require('body-parser');
 
 // Адресът към MongoDB и името на базата данни
 const mongoURI = 'mongodb://localhost:27017';
@@ -9,6 +10,8 @@ const dbName = 'uDemy';
 const dbCollection = 'test';
 
 mongoose.connect(mongoURI);
+
+app.use(bodyParcer.json());
 
 ////////SCHEMA/////////////
 const carSchema = mongoose.Schema({
@@ -19,6 +22,22 @@ const carSchema = mongoose.Schema({
 })
 
 const Car = mongoose.model('Car', carSchema);
+
+app.post('/api/addcar', async (req, res, next) => {
+    try {
+        const addCar = new Car({
+            brand: req.body.brand,
+            model: req.body.model,
+            year: req.body.year,
+            avail: req.body.avail,
+        });
+
+        await mongoose.save()
+    } catch (err) {
+        console.log(err);
+
+    }
+})
 
 ///////////////////////////
 
