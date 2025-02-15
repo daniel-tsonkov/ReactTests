@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const App = () => {
+  useEffect(() => {});
   //   const addUser = () => {
   //     axios
   //       .get('/api/users')
@@ -15,7 +17,7 @@ const App = () => {
   const onCarSubmit = () => {
     axios
       .post('/api/addcar', {
-        brand: 'Ford1',
+        brand: 'Ford4',
         model: 'Focus',
         year: 2000,
         avail: true,
