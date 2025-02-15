@@ -13,12 +13,16 @@ const App = () => {
   //   };
 
   const onCarSubmit = () => {
-    axios.post('/api/addcar', {
-      brand: String,
-      model: String,
-      year: Number,
-      avail: Boolean,
-    });
+    axios
+      .post('/api/addcar', {
+        brand: 'Ford',
+        model: 'Focus',
+        year: 2000,
+        avail: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
   };
 
   return (
