@@ -1,8 +1,14 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
-  useEffect(() => {});
+  let [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/getcars').then((response) => {
+      setCars(response.data);
+    });
+  }, []);
   //   const addUser = () => {
   //     axios
   //       .get('/api/users')
@@ -32,6 +38,11 @@ const App = () => {
       <div className="App">
         <h1>Add car </h1>
         <button onClick={() => onCarSubmit()}>Add car</button>
+
+        <hr />
+        {cars.map((car) => (
+          <div key={car._id}>{car.brand}</div>
+        ))}
       </div>
     </>
   );
