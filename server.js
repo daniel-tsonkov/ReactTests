@@ -18,7 +18,7 @@ const carSchema = mongoose.Schema({
     avail: Boolean
 })
 
-
+const Car = mongoose.model('Car', carSchema);
 
 ///////////////////////////
 
