@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const bodyParcer = require('body-parser');
 
 // Адресът към MongoDB и името на базата данни
-const mongoURI = 'mongodb://localhost:27017';
-const dbName = 'uDemy';
-const dbCollection = 'test';
+const mongoURI = 'mongodb://localhost:27017/cars';
+//const dbName = 'uDemy';
+//const dbCollection = 'test';
 
 mongoose.connect(mongoURI);
 
@@ -21,7 +21,7 @@ const carSchema = mongoose.Schema({
     avail: Boolean
 })
 
-const Car = mongoose.model('Car', carSchema);
+const Car = mongoose.model('Car', carSchema, 'cars_spec');
 
 app.post('/api/addcar', async (req, res, next) => {
     try {
@@ -32,7 +32,9 @@ app.post('/api/addcar', async (req, res, next) => {
             avail: req.body.avail,
         });
 
-        await mongoose.save()
+        const newCar = await addCar.save()
+        console.log(newCar);
+
     } catch (err) {
         console.log(err);
 

@@ -15,7 +15,7 @@ const App = () => {
   const onCarSubmit = () => {
     axios
       .post('/api/addcar', {
-        brand: 'Ford',
+        brand: 'Ford1',
         model: 'Focus',
         year: 2000,
         avail: true,
