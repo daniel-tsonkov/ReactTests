@@ -43,6 +43,10 @@ const App = () => {
         {cars.map((car) => (
           <div key={car._id}>{car.brand}</div>
         ))}
+
+        <hr />
+        <h2>Remove elements</h2>
+        <button onClick={() => onCarRemove()}>Delete car</button>
       </div>
     </>
   );
