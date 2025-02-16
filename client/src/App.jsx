@@ -5,10 +5,15 @@ const App = () => {
   let [cars, setCars] = useState([]);
 
   useEffect(() => {
+    getCars();
+  }, []);
+
+  const getCars = () => {
     axios.get('/api/getcars').then((response) => {
       setCars(response.data);
     });
-  }, []);
+  };
+
   //   const addUser = () => {
   //     axios
   //       .get('/api/users')
@@ -29,6 +34,17 @@ const App = () => {
         avail: true,
       })
       .then((response) => {
+        console.log(response.data);
+      });
+  };
+
+  const onCarRemove = () => {
+    axios
+      .post('/api/removecar', {
+        brand: 'Ford4',
+      })
+      .then((response) => {
+        getCars();
         console.log(response.data);
       });
   };
