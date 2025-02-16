@@ -58,6 +58,7 @@ app.post('/api/removecar', async (req, res, next) => {
     try {
         const brand = req.body.brand;
         let doc = await Car.findOneAndRemove({ brand: brand });
+        res.json(doc);
     } catch (err) {
         console.log(err);
     }

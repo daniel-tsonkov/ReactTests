@@ -44,8 +44,8 @@ const App = () => {
         brand: 'Ford4',
       })
       .then((response) => {
-        getCars();
         console.log(response.data);
+        getCars();
       });
   };
 
