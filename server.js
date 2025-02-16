@@ -58,15 +58,15 @@ app.post('/api/removecar', async (req, res, next) => {
     try {
         const brand = req.body.brand;
 
-        if (!brand) {
-            return res.status(400).json({ error: 'Brand is required' });
-        }
+        // if (!brand) {
+        //     return res.status(400).json({ error: 'Brand is required' });
+        // }
 
         let doc = await Car.findOneAndDelete({ brand: brand });
 
-        if (!doc) {
-            return res.status(404).json({ error: 'Car not found' });
-        }
+        // if (!doc) {
+        //     return res.status(404).json({ error: 'Car not found' });
+        // }
 
         res.json(doc);
     } catch (err) {
@@ -75,14 +75,15 @@ app.post('/api/removecar', async (req, res, next) => {
     }
 });
 
-app.post = ('/api/updatecar', async (req, serialize, next) => {
+app.post('/api/updatecar', async (req, res, next) => {
     try {
-        const id = req.body.is;
+        const id = req.body.id;
         const brand = req.body.brand;
 
-        let doc = await Car.updateOne(
+        let doc = await Car.findOneAndUpdate(
             { _id: id },
-            { $set: { barand: brand } }
+            { $set: { brand: brand } },
+            { new: true }
         );
         res.json(doc);
     } catch (err) {
