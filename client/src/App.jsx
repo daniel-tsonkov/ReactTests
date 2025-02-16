@@ -52,6 +52,7 @@ const App = () => {
   const onCarUpdate = () => {
     axios
       .post('/api/updatecar', {
+        id: '67b0ff7abe7225d67a6621b9',
         brand: 'Ford2',
       })
       .then((response) => {
