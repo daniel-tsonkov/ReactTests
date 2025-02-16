@@ -44,9 +44,8 @@ app.post('/api/addcar', async (req, res, next) => {
 
 app.get('/api/getcars', async (req, res, next) => {
     try {
-        let doc = await Car.find({
-
-        })
+        // let doc = await Car.find({}) //obekt ot vsichki koli
+        let doc = await Car.find({ brand: 'Ford2' }) //vrushta samo Ford2
         res.json(doc);
 
     } catch (err) {
