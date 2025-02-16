@@ -76,8 +76,18 @@ app.post('/api/removecar', async (req, res, next) => {
 });
 
 app.post = ('/api/updatecar', async (req, serialize, next) => {
-    const id = req.body.is;
-    const brand = req.body.brand;
+    try {
+        const id = req.body.is;
+        const brand = req.body.brand;
+
+        let doc = await Car.updateOne(
+            { _id: id },
+            { $set: { barand: brand } }
+        );
+        res.json(doc);
+    } catch (err) {
+        console.log(err);
+    }
 })
 
 ///////////////////////////
