@@ -57,10 +57,21 @@ app.get('/api/getcars', async (req, res, next) => {
 app.post('/api/removecar', async (req, res, next) => {
     try {
         const brand = req.body.brand;
+
+        if (!brand) {
+            return res.status(400).json({ error: 'Brand is required' });
+        }
+
         let doc = await Car.findOneAndDelete({ brand: brand });
+
+        if (!doc) {
+            return res.status(404).json({ error: 'Car not found' });
+        }
+
         res.json(doc);
     } catch (err) {
         console.log(err);
+        next(err); // предаваме грешката на Express error handler
     }
 })
 

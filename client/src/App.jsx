@@ -41,7 +41,7 @@ const App = () => {
   const onCarRemove = () => {
     axios
       .post('/api/removecar', {
-        brand: 'Ford4',
+        brand: 'Ford1',
       })
       .then((response) => {
         console.log(response.data);
