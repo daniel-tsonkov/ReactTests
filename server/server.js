@@ -12,9 +12,9 @@ mongoose.connect(mongoURI);
 app.use(bodyParcer.json());
 
 //MODELS////
-const { User } = require('/models/user');
+const { User } = require('/home/a1/Documents/JavaScript/ReactTests/server/models/user.js');
 
 const port = process.env.PORT || 3001
 app.listen(port, () => {
-    console.log(`Using port ${port}`);
+    console.log(`Using port!!! ${port}`);
 });
