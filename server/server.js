@@ -12,7 +12,20 @@ mongoose.connect(mongoURI);
 app.use(bodyParcer.json());
 
 //MODELS////
-const { User } = require('/home/a1/Documents/JavaScript/ReactTests/server/models/user.js');
+const { User } = require('./models/user.js');
+
+app.post(('/api/user'), async (req, res, next) => {
+    try {
+        const user = new User({
+            email: req.body.email,
+            password: req.body.password
+        });
+
+        let doc = await user.save();
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 const port = process.env.PORT || 3001
 app.listen(port, () => {
