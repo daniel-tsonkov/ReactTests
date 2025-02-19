@@ -25,7 +25,7 @@ app.post(('/api/user'), async (req, res, next) => {
         res.status(200).send(doc);
     } catch (err) {
         res.status(400).send(err);
-        console.log(err);
+        //console.log(err);
     }
 });
 
