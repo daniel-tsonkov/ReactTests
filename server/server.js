@@ -52,6 +52,10 @@ app.post('/api/user/login', async (req, res, next) => {
         res.json({ message: err })
         console.log(err);
     }
+});
+
+app.get('/api/books', async (req, res, next) => {
+    let token = req.cookies.auth;
 })
 
 const port = process.env.PORT || 3001
