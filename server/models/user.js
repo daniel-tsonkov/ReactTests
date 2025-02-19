@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = mongoose.Schema({
     email: {
@@ -13,6 +14,10 @@ const userSchema = mongoose.Schema({
         minlength: 6
     }
 });
+
+userSchema.pre('save', function (next) {
+
+})
 
 const User = mongoose.model('User', userSchema);
 module.exports = { User }
