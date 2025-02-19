@@ -47,6 +47,13 @@ userSchema.methods.generateToken = async function (cb) {
     var user = this;
     var token = jwt.sign(user._id.toHexString(), 'superSecretPass');
     user.token = token;
+
+    try {
+        await user.save();
+        cb(null, user);
+    } catch (err) {
+        if (err) return cb(err);
+    }
 };
 
 const User = mongoose.model('User', userSchema);

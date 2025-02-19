@@ -42,7 +42,11 @@ app.post('/api/user/login', async (req, res, next) => {
                 message: 'Bad password'
             })
 
-            res.status(200).send(isMatch);
+            //send response
+            user.generateToken((err, user) => {
+                if (err) throw err;
+                res.cookie('auth', user.token).send('OK...');
+            })
         })
     } catch (err) {
         res.json({ message: err })
