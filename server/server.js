@@ -36,9 +36,10 @@ app.post('/api/user/login', async (req, res, next) => {
         if (!user) throw 'User not found';
 
         //compare the password with the hashed password on DB
-
-
-        res.status(200).send(user);
+        user.comparePassword(req.body.password, (err, isMatch) => {
+            if (err) throw 'Bad password';
+            res.status(200).send(isMatch);
+        })
     } catch (err) {
         res.json({ message: err })
         console.log(err);
