@@ -59,7 +59,12 @@ userSchema.methods.generateToken = async function (cb) {
 userSchema.static.findByToken = function (token, cb) {
     const user = this;
     jwt.verify(token, 'superSecretPass', async (err, decode) => {
-
+        try {
+            let iser = await user.findOne({ '_id': decode }) //go to db and det user info
+            cb(null, user)
+        } catch (err) {
+            if (err) return cb(err);
+        }
     })
 };
 

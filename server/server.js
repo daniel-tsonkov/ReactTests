@@ -60,12 +60,13 @@ app.get('/api/books', async (req, res, next) => {
     let token = req.cookies.auth;
 
     User.findByToken(token, (err, user) => {
-
+        if (err) throw err;
+        if (!user) return res.status(400).json({
+            message: 'Bad token'
+        });
+        res.status(200).send(user);
     })
-
-    res.status(200).send('working!!!');
-
-})
+});
 
 const port = process.env.PORT || 3001
 app.listen(port, () => {
