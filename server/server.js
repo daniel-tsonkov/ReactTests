@@ -29,6 +29,22 @@ app.post(('/api/user'), async (req, res, next) => {
     }
 });
 
+app.post('/api/user/login', async (req, res, next) => {
+    try {
+        //finde use if exist
+        let user = await User.findOne({ 'email': req.body.email });
+        if (!user) throw 'User not found';
+
+        //compare the password with the hashed password on DB
+
+
+        res.status(200).send(user);
+    } catch (err) {
+        res.json({ message: err })
+        console.log(err);
+    }
+})
+
 const port = process.env.PORT || 3001
 app.listen(port, () => {
     console.log(`Using port!!! ${port}`);
