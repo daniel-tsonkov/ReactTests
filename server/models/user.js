@@ -33,14 +33,14 @@ userSchema.pre('save', function (next) { // da ne se pravi arrow zaradi skopa
         })
     } else {
         next();
-    }
+    };
 });
 
 userSchema.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) cb(err);
         cb(null, isMatch);
-    })
+    });
 };
 
 userSchema.methods.generateToken = async function (cb) {
@@ -53,20 +53,21 @@ userSchema.methods.generateToken = async function (cb) {
         cb(null, user);
     } catch (err) {
         if (err) return cb(err);
-    }
+    };
 };
 
-userSchema.static.findByToken = function (token, cb) {
+userSchema.statics.findByToken = function (token, cb) {
     const user = this;
+
     jwt.verify(token, 'superSecretPass', async (err, decode) => {
         try {
-            let iser = await user.findOne({ '_id': decode }) //go to db and det user info
-            cb(null, user)
+            let userDoc = await user.findOne({ '_id': decode }); //go to db and det user info
+            cb(null, userDoc);
         } catch (err) {
             if (err) return cb(err);
-        }
-    })
+        };
+    });
 };
 
 const User = mongoose.model('User', userSchema);
-module.exports = { User }
+module.exports = { User };
