@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParcer = require('body-parser');
-const app = express();
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const app = express();
 
 // Адресът към MongoDB и името на базата данни
 const mongoURI = 'mongodb://localhost:27017/';
@@ -10,6 +11,7 @@ mongoose.connect(mongoURI);
 
 //MIDDLEWARE////
 app.use(bodyParcer.json());
+app.use(cookieParser());
 
 //MODELS////
 const { User } = require('./models/user.js');
@@ -56,6 +58,13 @@ app.post('/api/user/login', async (req, res, next) => {
 
 app.get('/api/books', async (req, res, next) => {
     let token = req.cookies.auth;
+
+    User.findByToken(token, (err, user) => {
+
+    })
+
+    res.status(200).send('working!!!');
+
 })
 
 const port = process.env.PORT || 3001
