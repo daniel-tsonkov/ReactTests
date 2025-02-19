@@ -56,5 +56,12 @@ userSchema.methods.generateToken = async function (cb) {
     }
 };
 
+userSchema.static.findByToken = function (token, cb) {
+    const user = this;
+    jwt.verify(token, 'superSecretPass', async (err, decode) => {
+
+    })
+};
+
 const User = mongoose.model('User', userSchema);
 module.exports = { User }
