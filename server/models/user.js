@@ -16,12 +16,12 @@ const userSchema = mongoose.Schema({
     }
 });
 
-userSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) { // da ne se pravi arrow zaradi skopa
     var user = this;
 
     if (user.isModified('password')) {
         bcrypt.genSalt(SALT_I, function (err, salt) {
-            bcrypt.hash(user.password, salt, function (err, hash) {
+            bcrypt.hash(user.password, salt, (err, hash) => {
                 if (err) return next(err);
                 user.password = hash;
                 next();
