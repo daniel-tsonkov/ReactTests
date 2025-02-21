@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.1",
     "nodemon": "^3.1.9",
-    "punycode-url": "^1.0.0"
+    "punycode-url": "^1.0.0",
+    "validator": "^13.12.0"
   }
 }
