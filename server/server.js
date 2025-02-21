@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 // Адресът към MongoDB и името на базата данни
 const mongoURI = `mongodb://${process.env.DB_HOST}`;
+//const mongoURI = `mongodb://localhost:27017/flickbase`;
 mongoose.connect(mongoURI);
 
 //PARSING
