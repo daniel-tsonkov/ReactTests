@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const userSchema = mongoose.Schema({
@@ -48,7 +50,18 @@ const userSchema = mongoose.Schema({
     },
 });
 
-userSchema.statics.emailTaken = async function (email) {
+userSchema.pre('save', async function (next) { //hashing a tocken
+    let user = this;
+
+    if (user.isModified('password')) {
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(user.password, salt);
+    }
+
+    next();
+})
+
+userSchema.statics.emailTaken = async function (email) { //register user
     const user = await this.findOne({ email });
     return !!user;
 }
