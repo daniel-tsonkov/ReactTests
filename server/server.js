@@ -6,6 +6,9 @@ require('dotenv').config(); // връзка с .env файла
 
 const bodyParser = require('body-parser');
 
+const { xss } = require('express-xss-sanitizer');
+const mongoSanitize = require('express-mongo-sanitize');
+
 const routes = require('./routes');
 
 // Адресът към MongoDB и името на базата данни
