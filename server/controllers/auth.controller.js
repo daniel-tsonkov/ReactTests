@@ -1,3 +1,4 @@
+const httpStatus = require('http-status');
 const { authService } = require('../services')
 
 const authController = {
@@ -6,7 +7,7 @@ const authController = {
             const { email, password } = req.body;
             const user = await authService.createUser(email, password);
         } catch (err) {
-            console.log(err);
+            res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
     }
 }
