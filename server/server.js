@@ -19,6 +19,10 @@ mongoose.connect(mongoURI);
 //PARSING
 app.use(bodyParser.json());
 
+//SANITIZE
+app.use(xss());
+app.use(mongoSanitize());
+
 app.use('/api', routes);
 
 const port = process.env.PORT || 3001;
