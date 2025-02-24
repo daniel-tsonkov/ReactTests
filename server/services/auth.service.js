@@ -25,5 +25,6 @@ const genAuthToken = (user) => {
 }
 
 module.exports = {
-    createUser
+    createUser,
+    genAuthToken
 }
