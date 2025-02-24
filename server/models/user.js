@@ -56,6 +56,7 @@ userSchema.pre('save', async function (next) { //hashing a tocken
     if (user.isModified('password')) {
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(user.password, salt);
+        user.password.hash;
     }
 
     next();
@@ -65,6 +66,8 @@ userSchema.statics.emailTaken = async function (email) { //register user
     const user = await this.findOne({ email });
     return !!user;
 }
+
+userSchema.methods.generateAuthToken
 
 const User = mongoose.model('User', userSchema);
 module.exports = { User }
