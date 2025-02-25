@@ -6,7 +6,8 @@ const { ApiError } = require('../middleware/apiError');
 const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
-            throw new Error('Sorry email taken')
+            //throw new Error('Sorry email taken')
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry email taken');
         }
 
         const user = new User({
@@ -34,7 +35,8 @@ const signInWithEmailAndPassword = async (email, password) => {
         }
         /// validate password
         if (!(await user.comparePassword(password))) {
-            throw new Error('Sorry BAD password');
+            //throw new Error('Sorry BAD password');
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry BAD password');
         }
         return user;
     } catch (error) {
