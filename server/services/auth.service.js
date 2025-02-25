@@ -5,7 +5,7 @@ const userService = require('./user.service');
 const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
-            throw new Error('Email is taken');
+            throw new Error('Sorry email taken')
         }
 
         const user = new User({
@@ -14,36 +14,32 @@ const createUser = async (email, password) => {
         });
         await user.save();
         return user;
-    } catch (err) {
-        console.log(err);
-        throw err;
+    } catch (error) {
+        throw error;
     }
 }
 
 const genAuthToken = (user) => {
-    const token = user.generateAuthToken()
+    const token = user.generateAuthToken();
     return token;
 }
 
 const signInWithEmailAndPassword = async (email, password) => {
     try {
         const user = await userService.findUserByEmail(email);
-        //check email
         if (!user) {
-            throw new Error('Bad email')
+            throw new Error('Sorry BAD email');
         }
-
-        //validate password
+        /// validate password
         if (!(await user.comparePassword(password))) {
-            throw new Error('Bad password');
+            throw new Error('Sorry BAD password');
         }
-
         return user;
-    } catch (err) {
-        console.log(err);
-        throw err;
+    } catch (error) {
+        throw error;
     }
 }
+
 
 module.exports = {
     createUser,
