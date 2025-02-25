@@ -10,6 +10,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const routes = require('./routes');
 
+const { handleError } = require('./middleware/apiError');
+
 // Адресът към MongoDB и името на базата данни
 const mongoUri = `mongodb://${process.env.DB_HOST}`;
 //const mongoURI = `mongodb://localhost:27017/flickbase`;
@@ -25,6 +27,10 @@ app.use(mongoSanitize());
 // ROUTES
 app.use('/api', routes);
 
+//ERROR HANDLING
+app.use((err, req, res, next) => {
+    handleError(err, res)
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

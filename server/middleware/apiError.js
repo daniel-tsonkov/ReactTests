@@ -16,4 +16,9 @@ const handleError = (err, res) => {
         statusCode,
         message
     });
+};
+
+module.exports = {
+    ApiError,
+    handleError
 }

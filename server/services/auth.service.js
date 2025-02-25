@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { User } = require('../models/user');
 const userService = require('./user.service');
+const { ApiError } = require('../middleware/apiError');
 
 const createUser = async (email, password) => {
     try {
@@ -28,7 +29,8 @@ const signInWithEmailAndPassword = async (email, password) => {
     try {
         const user = await userService.findUserByEmail(email);
         if (!user) {
-            throw new Error('Sorry BAD email');
+            //throw new Error('Sorry BAD email');
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry BAD email');
         }
         /// validate password
         if (!(await user.comparePassword(password))) {
