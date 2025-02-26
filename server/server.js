@@ -28,6 +28,7 @@ app.use(mongoSanitize());
 app.use('/api', routes);
 
 //ERROR HANDLING
+
 app.use((err, req, res, next) => {
     handleError(err, res)
 });
