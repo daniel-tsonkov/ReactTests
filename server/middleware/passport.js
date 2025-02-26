@@ -11,8 +11,8 @@ const jwtOptions = {
 const jwtVerify = async (payload, done) => {
     try {
         const user = await User.findById(payload.sub);
-        if (condition) {
-
+        if (!user) {
+            return done(null, false);
         }
 
         done(null, user);
@@ -21,8 +21,8 @@ const jwtVerify = async (payload, done) => {
     }
 }
 
-const JwtStrategy = new Strategy(jwtOptions, jwtVerify);
+const jwtStrategy = new Strategy(jwtOptions, jwtVerify);
 
 module.exports = {
-    JwtStrategy
+    jwtStrategy
 }
