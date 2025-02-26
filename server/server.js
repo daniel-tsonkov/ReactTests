@@ -10,7 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const routes = require('./routes');
 
-const { handleError } = require('./middleware/apiError');
+const { handleError, convertToApiError } = require('./middleware/apiError');
 
 // Адресът към MongoDB и името на базата данни
 const mongoUri = `mongodb://${process.env.DB_HOST}`;
@@ -28,6 +28,7 @@ app.use(mongoSanitize());
 app.use('/api', routes);
 
 //ERROR HANDLING
+app.use(convertToApiError);
 
 app.use((err, req, res, next) => {
     handleError(err, res)
