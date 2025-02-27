@@ -39,10 +39,10 @@ const authController = {
         res.json(req.user);
     },
 
-    async testrole(req, res, next) {
-        res.json({ ok: 'DONE' });
-        // res.json(req.user);
-    }
+    // async testrole(req, res, next) {
+    //     res.json({ ok: 'DONE' });
+    //     // res.json(req.user);
+    // }
 }
 
 

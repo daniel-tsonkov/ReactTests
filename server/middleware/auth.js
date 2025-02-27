@@ -8,14 +8,25 @@ const verify = (req, res, resolve, reject, rights) => async (err, user) => {
         return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized access'));
     }
 
+    req.user = {
+        _id: user._id,
+        email: user.email,
+        role: user.role,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        age: user.age,
+        verified: user.verified
+    };
+
     if (rights.length) {
         const action = rights[0]; //createAny, readAny...
         const recource = rights[1]; //profile, articles
         const permission = roles.can(req.user.role)[action](recource);
 
         if (!permission.granted) {
-            return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized access'));
+            return reject(new ApiError(httpStatus.FORBIDDEN, 'Unauthorized. Don not have rights'));
         }
+        res.locals.permission = permission;
     }
 
     resolve();
