@@ -1,4 +1,4 @@
-const AccessControl = require('accesconstrol');
+const AccessControl = require('accesscontrol');
 
 const allRights = {
     'create:any': ['*'],
