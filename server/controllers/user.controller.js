@@ -16,6 +16,14 @@ const userController = {
             console.log(err);
             next(err);
         }
+    },
+    async updateProfile(req, res, next) {
+        try {
+            const user = await userService.updateUserProfile(req);
+        } catch (err) {
+            console.log(err);
+            next(err);
+        }
     }
 }
 
