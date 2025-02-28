@@ -8,6 +8,7 @@ const { route } = require('./auth.route');
 
 router.route('/profile')
     .get(auth('readOwn', 'profile'), userController.profile)
+    .patch(auth('updateOwn', 'profile'));
 
 
 module.exports = router;
