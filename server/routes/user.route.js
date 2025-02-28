@@ -7,7 +7,7 @@ const auth = require('../middleware/auth');
 const { route } = require('./auth.route');
 
 router.route('/profile')
-    .get(auth(), userController.profile)
+    .get(auth('readOwn', 'profile'), userController.profile)
 
 
 module.exports = router;
