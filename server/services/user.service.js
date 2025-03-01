@@ -41,16 +41,21 @@ const updateUserEmail = async (req) => {
         }
 
         const user = await User.findOneAndUpdate(
-            { _id: req.user._id },
+            { _id: req.user._id, email: req.user.email },
             {
                 "$set": {
-                    firstname: req.body.firstname,
-                    lastname: req.body.lastname,
-                    age: req.body.age
+                    email: req.body.newemail,
+                    verified: false,
                 }
             },
             { new: true }
         );
+
+        if (!user) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'User NOT foud!!!');
+        };
+
+        return user;
     } catch (err) {
         throw err;
     }
@@ -59,5 +64,6 @@ const updateUserEmail = async (req) => {
 module.exports = {
     findUserByEmail,
     findUserById,
-    updateUserProfile
+    updateUserProfile,
+    updateUserEmail
 }
