@@ -41,6 +41,6 @@ const userController = {
             next(err);
         }
     }
-}
+}//just upload
 
 module.exports = userController;
