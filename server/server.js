@@ -16,7 +16,7 @@ const { handleError, convertToApiError } = require('./middleware/apiError');
 
 // Адресът към MongoDB и името на базата данни
 //const mongoUri = `mongodb://${process.env.DB_HOST}`;
-const mongoUri = `mongodb://localhost:27017/flickbase`;
+const mongoUri = 'mongodb://192.168.0.104:27017/flickbase';
 mongoose.connect(mongoUri)
 
 // PARSING
