@@ -25,6 +25,15 @@ const userController = {
             console.log(err);
             next(err);
         }
+    },
+    async updateUserEmail(req, res, next) {
+        try {
+            const user = await userService.updateUserProfile(req);
+            res.json(res.locals.permission.filter(user._doc));
+        } catch (err) {
+            console.log(err);
+            next(err);
+        }
     }
 }
 
