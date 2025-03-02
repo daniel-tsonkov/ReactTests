@@ -14,6 +14,28 @@ let transporter = nodemailer.createTransport({
 const registerEmail = async (userEmail, user) => {
     try {
         const emailToken = user.generateRegisterToken();
+        let mailGenerator = new Mailgen({
+            theme: "default",
+            product: {
+                name: "Flickbase",
+                link: `${process.env.EMAIL_MAINURL}`
+            }
+        });
+
+        const email = {
+            body: {
+                name: userEmail,
+                intro: 'intro message for welcome.......',
+                action: {
+                    instructions: 'To validate your account, please click here:',
+                    button: {
+                        color: '#1a73e8',
+                        text: 'Validate your acount',
+                        link: `${process.env.SAIT_DOMAIN}verification?=asjdkldjsadalj`
+                    }
+                }
+            }
+        }
     } catch (err) {
         throw err;
     }
