@@ -71,5 +71,6 @@ module.exports = {
     findUserByEmail,
     findUserById,
     updateUserProfile,
-    updateUserEmail
+    updateUserEmail,
+    validateToken
 }

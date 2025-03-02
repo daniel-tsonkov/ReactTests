@@ -48,6 +48,11 @@ const userController = {
     async verifyAcount(req, res, next) {
         try {
             const token = userService.validateToken(req.query.validation);
+            const user = await userService.findUserById(token.sub);
+
+            if (!user) {
+                throw new ApiError(httpStatus.NOT_FOUND, 'User not found!!!!');
+            }
         } catch (err) {
             next(err);
         }
