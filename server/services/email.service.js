@@ -9,9 +9,17 @@ let transporter = nodemailer.createTransport({
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASSWORD
     }
-})
+});
+
+const registerEmail = async (userEmail, user) => {
+    try {
+        const emailToken = user.generateRegisterToken();
+    } catch (err) {
+        throw err;
+    }
+};
 
 module.exports = {
-
+    registerEmail
 }
 
