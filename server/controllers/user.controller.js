@@ -53,6 +53,17 @@ const userController = {
             if (!user) {
                 throw new ApiError(httpStatus.NOT_FOUND, 'User not found!!!!');
             }
+            if (user.verified) {
+                throw new ApiError(httpStatus.NOT_FOUND, 'User verified!!!!');
+            };
+
+            user.verified = true;
+            user.save();
+
+            res.status(httpStatus.CREATED).send({
+                email: user.email,
+                verified: true
+            })
         } catch (err) {
             next(err);
         }
