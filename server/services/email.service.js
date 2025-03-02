@@ -31,11 +31,24 @@ const registerEmail = async (userEmail, user) => {
                     button: {
                         color: '#1a73e8',
                         text: 'Validate your acount',
-                        link: `${process.env.SAIT_DOMAIN}verification?=asjdkldjsadalj`
+                        link: `${process.env.SAIT_DOMAIN}verification?=${emailToken}`
                     }
-                }
+                },
+                outro: 'For need from help....'
             }
-        }
+        };
+
+        let emailBody = mailGenerator.generate(email);
+
+        let message = {
+            from: process.env.EMAIL,
+            to: userEmail,
+            subject: "Dobre doshli v flickbase",
+            html: emailBody
+        };
+
+        await transporter.sendMail(message);
+        return true;
     } catch (err) {
         throw err;
     }
