@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { ApiError } = require('../middleware/apiError');
 const { userService, authService, emailService } = require('../services');
+const { verify } = require('jsonwebtoken');
 
 const userController = {
     async profile(req, res, next) {
@@ -43,7 +44,14 @@ const userController = {
             console.log(err);
             next(err);
         }
+    },
+    async verifyAcount(req, res, next) {
+        try {
+
+        } catch (err) {
+            next(err);
+        }
     }
-}//just upload
+}
 
 module.exports = userController;
